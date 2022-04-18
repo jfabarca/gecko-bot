@@ -1,9 +1,9 @@
-import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
-
-async function bootstrap() {
-  const app = await NestFactory.createApplicationContext(AppModule);
-  await app.init();
+function sayMyName(name: string): void {
+  if (name === "Heisenberg") {
+    console.log("You're right 👍");
+  } else {
+    console.log("You're wrong 👎");
+  }
 }
 
-bootstrap();
+sayMyName("Heisenberg");
