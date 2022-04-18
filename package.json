@@ -14,6 +14,8 @@
     "prebuild": "rimraf dist",
     "build": "tsc",
     "start": "ts-node src/main.ts",
+    "start:dev": "nodemon ./src/main.ts",
+    "start:prod": "node ./dist/main.js",
     "lint": "eslint src/**/*.ts --fix",
     "prepare": "husky install"
   },
@@ -28,6 +30,7 @@
     "eslint-config-prettier": "^8.5.0",
     "husky": "^7.0.0",
     "lint-staged": ">=10",
+    "nodemon": "^2.0.15",
     "prettier": "2.6.2",
     "rimraf": "^3.0.2",
     "ts-node": "^10.7.0",
