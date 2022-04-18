@@ -1,6 +1,14 @@
-import { InjectDiscordClient, Once } from '@discord-nestjs/core';
+import {
+  InjectDiscordClient,
+  On,
+  Once,
+  UseCollectors,
+  UseGuards,
+} from '@discord-nestjs/core';
 import { Injectable, Logger } from '@nestjs/common';
-import { Client } from 'discord.js';
+import { Client, Message } from 'discord.js';
+import { PlanningPokerCollector } from './collectors';
+import { MessageFromUserGuard } from './guards';
 
 @Injectable()
 export class BotGateway {
@@ -11,5 +19,13 @@ export class BotGateway {
   @Once('ready')
   onReady() {
     this.logger.log(`Bot ${this.client.user.tag} was started!`);
+  }
+
+  @On('messageCreate')
+  @UseGuards(MessageFromUserGuard)
+  // @UseCollectors(PlanningPokerCollector)
+  async onMessage(message: Message): Promise<void> {
+    this.logger.log('onMessage');
+    // await message.reply('Message processed successfully');
   }
 }

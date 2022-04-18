@@ -14,7 +14,11 @@ import { BotModule } from './bot';
       useFactory: (configService: ConfigService) => ({
         token: configService.get('TOKEN'),
         discordClientOptions: {
-          intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
+          intents: [
+            Intents.FLAGS.GUILDS,
+            Intents.FLAGS.GUILD_MESSAGES,
+            Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
+          ],
         },
         // registerCommandOptions: [
         //   {
