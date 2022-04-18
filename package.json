@@ -14,7 +14,8 @@
     "prebuild": "rimraf dist",
     "build": "tsc",
     "start": "ts-node src/main.ts",
-    "lint": "eslint src/**/*.ts --fix"
+    "lint": "eslint src/**/*.ts --fix",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@tsconfig/node16": "^1.0.2",
@@ -25,6 +26,8 @@
     "cz-conventional-changelog": "3.3.0",
     "eslint": "^8.13.0",
     "eslint-config-prettier": "^8.5.0",
+    "husky": "^7.0.0",
+    "lint-staged": ">=10",
     "prettier": "2.6.2",
     "rimraf": "^3.0.2",
     "ts-node": "^10.7.0",
@@ -34,5 +37,9 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "lint-staged": {
+    "*.{js,ts}": "eslint --cache --fix",
+    "*": "prettier --ignore-unknown --write"
   }
 }
